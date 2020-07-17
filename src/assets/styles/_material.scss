@@ -1,0 +1,38 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$ui-primary: mat-palette($primary-palette);
+$ui-accent: mat-palette($accent-palette);
+$ui-warn: mat-palette($warn-palette);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$ui-theme: mat-light-theme($ui-primary, $ui-accent, $ui-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+@include angular-material-theme($ui-theme);
+
+
+/*=======================
+    Material Override
+========================*/
+// Expansion Panels
+.mat-accordion .mat-expansion-panel {
+    margin-bottom: 16px; border: 1px solid whitesmoke;
+    .mat-expansion-panel-header {
+        background-color: whitesmoke; h1, h2, h3, h4, h5 { padding: 0; }
+    }
+    .mat-expansion-panel-body { padding: 16px; }
+}
+
+/* Table */
+table { width: 100%; td { padding-right: 10px !important; }}

@@ -1,0 +1,66 @@
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700|Roboto:300,400,700&display=swap');
+// Material Icons
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons+Outlined');
+
+// Typography
+$title-typography: 'Roboto Slab', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$body-typography: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+// Color scheme
+$color-light: #ffffff;
+$color-dark: #000000;
+$color-primary: #162f5d;
+$color-primary-light: #204486;
+$color-primary-lighter: #4d699e;
+$color-accent: #df195c;
+$color-warn: #cc3300;
+
+
+// Typography
+$color-heading: #0071b9;
+$color-body: #555555;
+
+// App Scrollbars
+$scrollbarColor: $color-primary-light;
+
+// Color palettes used by material
+$primary-palette: (
+    50 : #e3e6ec, 100 : #b9c1ce, 200 : #8b97ae, 300 : #5c6d8e, 400 : #394e75, 500 : #162f5d,
+    600 : #132a55, 700 : #10234b, 800 : #0c1d41, 900 : #061230, A100 : #6a8aff, A200 : #3762ff,
+    A400 : #0439ff, A700 : #0032e9,
+    contrast: (
+        50 : #000000, 100 : #000000, 200 : #000000, 300 : #ffffff, 400 : #ffffff, 500 : #ffffff,
+        600 : #ffffff, 700 : #ffffff, 800 : #ffffff, 900 : #ffffff, A100 : #000000, A200 : #ffffff,
+        A400 : #ffffff, A700 : #ffffff,
+    )
+);
+
+$accent-palette:  (
+    50 : #fbe3eb, 100 : #f5bace, 200 : #ef8cae, 300 : #e95e8d, 400 : #e43c74, 500 : #df195c,
+    600 : #db1654, 700 : #d7124a, 800 : #d20e41, 900 : #ca0830, A100 : #fff4f6, A200 : #ffc1cb,
+    A400 : #ff8ea0, A700 : #ff748b,
+    contrast: (
+        50 : #000000, 100 : #000000, 200 : #000000, 300 : #000000, 400 : #ffffff, 500 : #ffffff,
+        600 : #ffffff, 700 : #ffffff, 800 : #ffffff, 900 : #ffffff, A100 : #000000, A200 : #000000,
+        A400 : #000000, A700 : #000000,
+    )
+);
+
+$warn-palette: (
+    50 : #f9e7e0, 100 : #f0c2b3, 200 : #e69980, 300 : #db704d, 400 : #d45226, 500 : #cc3300,
+    600 : #c72e00, 700 : #c02700, 800 : #b92000, 900 : #ad1400, A100 : #ffd9d7, A200 : #ffaaa4,
+    A400 : #ff7a71, A700 : #ff6258,
+    contrast: (
+        50 : #000000, 100 : #000000, 200 : #000000, 300 : #000000, 400 : #ffffff, 500 : #ffffff,
+        600 : #ffffff, 700 : #ffffff, 800 : #ffffff, 900 : #ffffff, A100 : #000000, A200 : #000000,
+        A400 : #000000, A700 : #000000,
+    )
+);
+
+// scrollbar
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: lighten($color: $scrollbarColor, $amount: 60%); }
+::-webkit-scrollbar-thumb { background: lighten($color: $scrollbarColor, $amount: 20%); }
+::-webkit-scrollbar-thumb:hover { background: $scrollbarColor; }

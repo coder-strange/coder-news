@@ -14,5 +14,28 @@
   "exclude": [
     "src/test.ts",
     "src/**/*.spec.ts"
-  ]
+  ],
+  "paths" : {
+    "@core/services/*": [
+      "src/app/core/services/*"
+    ],
+    "@modules/*": [
+      "src/app/modules/*"
+    ],
+    "@shared/*": [
+      "src/app/shared/*"
+    ],
+    "@core/models":[
+      "src/app/core/models/"
+    ],
+    "@environment": [
+      "src/evironments/environment"
+    ],
+    "@animations/*" : [
+      "src/app/core/animations/*"
+    ],
+    "@app-config" : [
+      "src/app/configs/app-settings.config"
+    ]
+  }
 }

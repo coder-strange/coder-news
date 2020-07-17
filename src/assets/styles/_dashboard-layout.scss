@@ -1,0 +1,136 @@
+/*=======================
+    Header
+========================*/
+#header { height: 64px; }
+
+/*=======================
+    Page
+========================*/
+#page {
+    height: calc(100% - 64px);
+    #sidebar, #page-content {
+        transition: 0.3s width ease-in-out;
+    }
+}
+
+/*=======================
+Sidebar
+========================*/
+#sidebar {
+    width: 200px; height: 100%; float: left; white-space: nowrap;
+    overflow-y: auto; background-color: #23282c;
+
+    ul {
+        list-style-type: none;
+        li {
+            a {
+                display: inline-block; width: 100%; color: $color-light;
+                padding: 5px 0; font-weight: 300;
+                .mat-icon, span {
+                    display: inline-block; height: 32px;
+                    line-height: 32px; text-align: center;
+                    vertical-align: top;
+                }
+                .mat-icon { width: 32px; margin: 0 5px 0 16px; }
+            }
+            ul { padding-left: 16px; li.active a { font-weight: bold; } .mat-icon { font-size: 20px; }}
+        }
+    }
+    & > ul {
+        li.active { background-color: #32373b; }
+        a.active {
+            background-color: #0074aa; font-weight: bold; position: relative;
+            &:after {
+                content: ''; position: absolute;
+                width: 0; height: 0; top: 10px; right: 0;
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                border-right: 12px solid $color-light;
+            }
+        }
+    }
+
+    @media screen and (max-width: 960px) {
+        width: 64px; overflow: visible;
+        & > ul {
+            padding-top: 10px;
+            & > li > a span { display: none; }
+            & > li {
+                position: relative;
+                ul { display: none; }
+                &:hover ul {
+                    display: block; position: absolute; width: 200px; background-color: #32373b;
+                    z-index: 999; top: 0; left: 66px; padding: 5px;
+                    &:after {
+                        content: ''; position: absolute;
+                        width: 0; height: 0; top: 10px; left: -10px;
+                        border-top: 10px solid transparent;
+                        border-bottom: 10px solid transparent;
+                        border-right:12px solid #32373b;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*=======================
+    Page
+========================*/
+#page-content {
+    width: calc(100% - 200px); height: 100%; float: left;
+    #page-control {
+        height: 52px; box-shadow: 0 0 4px rgba(0,0,0,0.4);
+        #page-title { color: $color-heading; }
+        #searchBox { font-size: 1.4rem; position: relative; top: 8px;
+        .mat-icon { position: relative; top: 5px; }}
+    }
+
+    #content {
+        height: calc(100% - 52px); padding: 16px; overflow-y: auto;
+        #main, #right-sidebar { float: left; height: 100%; }
+        #main { width: calc(100% - 350px); overflow-y: auto;  padding-right: 16px; }
+        #right-sidebar { width: 350px; padding-left: 16px; }
+        .ql-editor { height: 250px; }
+        .table-wrapper { height: 100%; width: 100%; overflow: auto; }
+        table {
+            width: 100%; th, td { white-space: nowrap; }
+            td.mat-table-sticky { border-left: 1px solid whitesmoke; }
+        }
+        .sticky-paginator { bottom: 0px; left: 0; position: sticky; z-index: 10; }
+        & > .mat-tab-group { height: 100%; }
+    }
+
+    @media screen and (max-width: 960px) {
+        width: calc(100% - 64px);
+    }
+}
+
+// helper
+.mat-form-field { margin-right: 10px; width: 220px; }
+.button-inputs {
+    line-height: 67px;
+    .label { font-weight: bold; margin-right: 20px; }
+    .label + * { position: relative; top: 2px; }
+}
+.grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 16px;
+    .column { .mat-form-field { width: calc(50% - 10px); }}
+    .button-inputs { width: calc(50% - 10px); display: inline-block; margin-right: 10px; }
+
+    @media screen and (max-width: 1366px) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+// Tables
+.mat-cell > span[title="Low"], .mat-cell > span[title="Medium"], .mat-cell > span[title="High"] {
+    display: inline-block; padding: 5px 15px; text-align: center;
+    border-radius: 5px; color: $color-light; font-weight: bold;
+    &[title="Low"] { background-color: #4bb543; }
+    &[title="Medium"] { background-color: #e2b605; }
+    &[title="High"] { background-color: #cc3300; }
+}
+
+.mat-cell > span[title^="+"] { color: #4bb543; }
+.mat-cell > span[title^="-"] { color: #cc3300; }
