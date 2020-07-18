@@ -1,4 +1,90 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~src/assets/fonts/css';
+@import '~src/assets/fonts/icon';
+@import '~src/assets/styles/config';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.spacer {
+    flex: 1 1 auto;
+}
+  
+.article-item{
+    cursor: pointer;
+    &:hover{
+        background-color: $hover-background;
+    }
+}
+span.data{
+    font-weight: 400;
+    color: red;
+}
+
+.article-meta{
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 0.8;
+}
+.mat-row{
+    cursor: pointer;
+    &:hover{
+        background-color: $hover-background;
+    }
+}
+
+
+.jump-scroll {
+    position: fixed !important; 
+    bottom: 20px; 
+    right: 30px; 
+    z-index: 99; 
+    background-color:  $color-primary; 
+    color: white; 
+    font-size: 18px; 
+  }
+  
+  .jump-scroll:hover {
+    background-color: $hover-background; /* Add a dark-grey background on hover */
+  }
+  
+
+@media screen and (min-width: 960px) {
+    .mat-column-num_comments {
+        word-wrap: break-word !important;
+        white-space: unset !important;
+        flex: 0 0 8% !important;
+        width: 8% !important;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+        -ms-hyphens: auto;
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+    }
+
+    .mat-column-vote_count {
+        word-wrap: break-word !important;
+        white-space: unset !important;
+        flex: 0 0 8% !important;
+        width: 8% !important;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+        -ms-hyphens: auto;
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+    }
+    
+    .mat-column-up_vote {
+        word-wrap: break-word !important;
+        white-space: unset !important;
+        flex: 0 0 8% !important;
+        width: 8% !important;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+        -ms-hyphens: auto;
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+    }
+}

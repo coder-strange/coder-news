@@ -19,6 +19,7 @@ import 'zone.js/dist/zone-node';
 
 import * as express from 'express';
 import {join} from 'path';
+const compression = require('compression');
 
 // Express server
 const app = express();
@@ -36,6 +37,7 @@ app.engine('html', ngExpressEngine({
     provideModuleMap(LAZY_MODULE_MAP)
   ]
 }));
+app.use(compression());
 
 app.set('view engine', 'html');
 app.set('views', DIST_FOLDER);

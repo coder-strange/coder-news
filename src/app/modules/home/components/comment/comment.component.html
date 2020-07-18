@@ -1,0 +1,9 @@
+<mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header  [attr.aria-labelledby]="comment.author">
+        <mat-panel-title>
+            <span class="data"  role="contentinfo" aria-labelledby="Comment Details">{{comment.author}}</span> &nbsp;on &nbsp;<span class="data">{{comment.created_at | date}}</span>
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+        <div  role="contentinfo" aria-labelledby="Comment Details" [innerHTML]="comment.text"></div>
+        <app-comment *ngFor="let reply of comment.children" [comment]="reply"></app-comment>
+</mat-expansion-panel>

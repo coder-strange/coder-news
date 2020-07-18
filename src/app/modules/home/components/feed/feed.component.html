@@ -1,0 +1,77 @@
+<app-title-bar [title]="'News Feeds'" [enableSearch]="true" [searchString]="query" (filter)="doSearch($event)" [jumpScroller]="true"></app-title-bar>
+
+<div id="content"  role="main">
+    <!-- <mat-list>
+        <mat-list-item *ngFor="let article of articles; trackBy:articleTrackItem" class="article-item" [routerLink]="'../article/' + article.objectID">
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <div mat-line>{{article.title}} 
+                <button color="accent" mat-icon-button>
+                    <mat-icon>launch</mat-icon>
+                </button>
+                |
+                <button color="accent" mat-icon-button>
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </div>
+            <div mat-line class="summary">
+                <mat-icon>history_edu</mat-icon> <b>{{article.author}}</b> &nbsp; 
+                <p>
+                   On <b>{{article.created_at| date}}</b> &nbsp; 
+                </p>
+                | &nbsp;
+                <p>
+                 <b>{{article.num_comments}}</b> Comments 
+                </p>
+               
+            </div>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-list> -->
+    
+    <div class="example-container mat-elevation-z8">
+
+        <mat-table [dataSource]="articles" matSort>
+      
+          <!-- Title Column -->
+          <ng-container matColumnDef="num_comments">
+            <mat-header-cell *matHeaderCellDef mat-sort-header aria-label="Number of Comments Column"> Comments </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="comments" [attr.aria-label]="row.num_comments"> {{row.num_comments ? row.num_comments : 0 }} </mat-cell>
+          </ng-container>
+      
+          <!-- Author Column -->
+          <ng-container matColumnDef="vote_count">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Vote Count </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="vote_count"> {{row.num_votes}} </mat-cell>
+          </ng-container>
+      
+          <!-- Created Date Column -->
+          <ng-container matColumnDef="up_vote">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Up Vote </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="up_vote"> 
+                <button mat-icon-button aria-label="Up Vote Article" (click)="doVote($event, row, 'up')"><mat-icon>keyboard_arrow_up</mat-icon></button>
+                <!-- <button mat-icon-button (click)="doDownVote($event, row, 'down')"><mat-icon>keyboard_arrow_down</mat-icon></button> -->
+            </mat-cell>
+          </ng-container>
+      
+          <!-- Action Column -->
+          <ng-container matColumnDef="details">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Details </mat-header-cell>
+            <mat-cell *matCellDef="let row;let idx = index" data-label="details" [attr.aria-label]="row.title"> 
+                {{row.title}}&nbsp;<small><a [href]="row.url" aria-label="Go to Source" target="_black" style="font-weight: 400;">({{row.url}})</a></small> &nbsp; By &nbsp; <b>{{row.author}}</b>&nbsp; <b>{{row.created_at | dateAgo}}</b> &nbsp; <button mat-icon-button  aria-label="Hide Article" (click)="hideArticle($event, row, idx)">[<mat-icon>remove</mat-icon> Hide]</button>   
+            </mat-cell>
+          </ng-container>
+      
+          <mat-header-row *matHeaderRowDef="['num_comments', 'vote_count', 'up_vote', 'details']"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: ['num_comments', 'vote_count', 'up_vote', 'details'];" (click)="gotoArticle(row)" aria-label="Go to Article Details">
+          </mat-row>
+        </mat-table>
+      
+        <mat-paginator [pageIndex]="paginationData.page" [length]="paginationData.hitsPerPage * paginationData.nbPages"
+        [pageSize]="paginationData.hitsPerPage"
+        (page)="pageChanged($event)"></mat-paginator>
+      </div> 
+      <br />
+      <mat-divider></mat-divider>
+      <br />
+    <app-timeline [chartData]="articleLocalData"></app-timeline>
+</div>

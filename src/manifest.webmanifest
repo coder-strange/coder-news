@@ -1,7 +1,7 @@
 {
   "name": "coder-news",
   "short_name": "coder-news",
-  "theme_color": "#1976d2",
+  "theme_color": "#162f5d",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",

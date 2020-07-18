@@ -1,0 +1,24 @@
+<app-title-bar [title]="'Article By ' + article.author" [enableSearch]="false" [actions]="actionBtns"  [jumpScroller]="true"></app-title-bar>
+
+<div id="content" role="main">
+    <mat-accordion multi>
+        <mat-expansion-panel hideToggle [expanded]="true">
+        <mat-expansion-panel-header  role="contentinfo" aria-labelledby="Article Title">
+            <mat-panel-title>
+                {{article.title}}
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <span class="data"  role="contentinfo" aria-labelledby="Article Details">{{article.title}}</span> (<a [href]="article.url">{{article.url}}</a>) <br/>
+        <mat-divider></mat-divider>
+        <p class="article-meta"  role="contentinfo" aria-labelledby="Article Details">
+            <span class="data">{{article.points}}</span> points &nbsp; By <span class="data">{{article.author}}</span> &nbsp; On <span class="data">{{article.created_at | date}}</span>
+            
+        </p>
+        </mat-expansion-panel>
+        <h5 *ngIf="article.children">Comments</h5>
+        <app-comment *ngFor="let comment of article.children" [comment]="comment"></app-comment>
+
+    </mat-accordion>
+  </div>

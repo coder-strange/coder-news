@@ -4,7 +4,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA
 } from '@angular/material/dialog';
-import { ConfirmDialogConfig } from '@modules/shared/models/confirm.dialog-config-model';
+import { ConfirmDialogConfig } from '../models';
 
 @Component({
   selector: 'app-message-dialog',

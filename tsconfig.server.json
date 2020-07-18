@@ -2,38 +2,17 @@
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app-server",
-    "target": "es2016"
-},
+    "target": "es2016",
+  },
   "files": [
     "src/main.server.ts"
   ],
   "angularCompilerOptions": {
-    "entryModule": "./src/app/app.server.module#AppServerModule"
+    "entryModule": "./src/app/app.server.module#AppServerModule",
+    "enableIvy": false
   },
   "include": [
-    "src/**/*.d.ts"
+    "src/**/*.d.ts", "./src/**/*.json", "./src/**/*.ts"
   ],
-  "paths" : {
-    "@core/services/*": [
-      "src/app/core/services/*"
-    ],
-    "@modules/*": [
-      "src/app/modules/*"
-    ],
-    "@shared/*": [
-      "src/app/shared/*"
-    ],
-    "@core/models":[
-      "src/app/core/models/"
-    ],
-    "@environment": [
-      "src/evironments/environment"
-    ],
-    "@animations/*" : [
-      "src/app/core/animations/*"
-    ],
-    "@app-config" : [
-      "src/app/configs/app-settings.config"
-    ]
-  }
+ 
 }
