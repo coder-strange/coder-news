@@ -11,11 +11,7 @@ const routes: Routes = [
     // loadChildren :  () => import('./modules/home/home.module').then(m => m.HomeModule) //Comment it for Faster Inital Paint
     // Route for Faster Inital Paint
     children: [
-      { path: '', redirectTo: 'feed', pathMatch: 'full' },
-      {
-        path: 'feed',
-        redirectTo: 'feed'
-      },
+      { path: '', component: FeedComponent },
       {
         path: 'feed',
         component: FeedComponent

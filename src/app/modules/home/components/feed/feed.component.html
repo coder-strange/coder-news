@@ -57,7 +57,7 @@
           <ng-container matColumnDef="details">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Details </mat-header-cell>
             <mat-cell *matCellDef="let row;let idx = index" data-label="details" [attr.aria-label]="row.title"> 
-                {{row.title}}&nbsp;<small><a [href]="row.url" aria-label="Go to Source" target="_black" style="font-weight: 400;">({{row.url}})</a></small> &nbsp; By &nbsp; <b>{{row.author}}</b>&nbsp; <b>{{row.created_at | dateAgo}}</b> &nbsp; <button mat-icon-button  aria-label="Hide Article" (click)="hideArticle($event, row, idx)">[<mat-icon>remove</mat-icon> Hide]</button>   
+                {{row.title}}&nbsp;<small><a [href]="row.url" aria-label="Go to Source" target="_black" style="font-weight: 400;">({{ row.url && row.url.length > 70 ? (row.url.substring(0,50) + '...') : row.url}})</a></small> &nbsp; By &nbsp; <b>{{row.author}}</b>&nbsp; <b>{{row.created_at | dateAgo}}</b> &nbsp; <button mat-icon-button  aria-label="Hide Article" (click)="hideArticle($event, row, idx)">[<mat-icon>remove</mat-icon> Hide]</button>   
             </mat-cell>
           </ng-container>
       

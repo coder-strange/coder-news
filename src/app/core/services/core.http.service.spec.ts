@@ -17,10 +17,6 @@ describe('CoreService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, HttpClientTestingModule],
       providers: [
-        // {
-        //   provide: HttpClient,
-        //   useValue: MockHttpClient
-        // }
       ]
     });
 
@@ -49,8 +45,8 @@ describe('CoreService', () => {
         PhoneNumber1: '(443) 545-4643',
         PhoneNumber2: '(542) 356-7678',
         MobileNumber: '(431) 563-8777',
-        EmailId: 'priti@primussoft.com',
-        SecondaryEmailId: 'priti@primussoft.com',
+        EmailId: 'test@test.com',
+        SecondaryEmailId: 'test@test.com',
         Fax: '54e16378'
       },
       ClientAddress: {
