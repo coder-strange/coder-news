@@ -26,6 +26,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
+              {
+                "glob": "robots.txt",
+                "input": "src",
+                "output": "/"
+              },
               "src/manifest.webmanifest"
             ],
             "styles": [

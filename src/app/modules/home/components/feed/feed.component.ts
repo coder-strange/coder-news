@@ -2,10 +2,14 @@ import { Component, OnInit, ViewChild, Inject, PLATFORM_ID } from '@angular/core
 import { CoreHttpService } from 'src/app/core/services/core.http.service';
 import { SearchResponse, ArticleComplete } from '../../models'
 import { Router, ActivatedRoute } from '@angular/router';
-import { TableConfig } from 'src/app/shared/models';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from 'src/app/shared/confirm/confirm-modal.component';
+import { Meta, Title } from '@angular/platform-browser';
+
+
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
@@ -31,7 +35,10 @@ export class FeedComponent implements OnInit {
 
   constructor(private _http:CoreHttpService, 
               private _route:Router, 
+              private _dialog:MatDialog,
               private _activatedRoute:ActivatedRoute, 
+              private metaTagService: Meta,
+              private titleService: Title,
               @Inject(PLATFORM_ID) private platformId: any,
               @Inject('LOCALSTORAGE') private localStorage: any) { }
 
@@ -39,12 +46,20 @@ export class FeedComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
         // localStorage will be available: we can use it.
         this.articleLocalData = JSON.parse(this.localStorage.getItem("articles"));
-        console.log("LOCALHOST")
     }
-    if (isPlatformServer(this.platformId)) {
-        // localStorage will be null.
-      
-    }
+    this.metaTagService.addTags([
+      { name: 'keywords', content: 'Angular SEO Integration, Music CRUD, Angular Universal' },
+      { name: 'robots', content: 'index, follow' },
+      { name: 'author', content: 'Digamber Singh' },
+      { name: 'date', content: new Date().toLocaleDateString(), scheme: 'YYYY-MM-DD' },
+      { charset: 'UTF-8' }
+    ]);
+
+    this.titleService.setTitle("Coder News | Feed" );
+    this.metaTagService.updateTag(
+      { name: 'description', content: 'Coder News feed, article list' }
+    );
+
     this._activatedRoute.queryParams.subscribe(qParams=>{
       this.paginationData.page = qParams.page ? qParams.page : 1;
       this.query = qParams.query ? qParams.query : '';
@@ -105,10 +120,24 @@ export class FeedComponent implements OnInit {
    */
   hideArticle(ev:MouseEvent, row:ArticleComplete, index:number): void{
     ev.stopPropagation();
-    this.articleLocalData = { ...this.articleLocalData, [row.objectID] : { hidden:true} };
-    localStorage.setItem("articles", JSON.stringify(this.articleLocalData));
-    this.articles.splice(index, 1);
-    this.articles = [...this.articles]
+
+    const diaglogRef = this._dialog.open(ConfirmDialogComponent, {
+      data : {
+        title : "Are you sure you want to hide?",
+        body : "This article will be removed for you."
+      }
+    })
+
+    diaglogRef.componentInstance.onButtonClick.subscribe(res=>{
+      if(res){
+        this.articleLocalData = { ...this.articleLocalData, [row.objectID] : { hidden:true} };
+        localStorage.setItem("articles", JSON.stringify(this.articleLocalData));
+        this.articles.splice(index, 1);
+        this.articles = [...this.articles]
+      }
+    })
+
+   
   }
 
   pageChanged(ev:PageEvent): void{

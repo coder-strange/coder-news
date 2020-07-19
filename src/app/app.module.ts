@@ -10,6 +10,7 @@ import { environment } from '../environments/environment';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './shared/material/material.module';
+import { HomeModule } from './modules/home/home.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MaterialModule } from './shared/material/material.module';
     SharedModule,
     MaterialModule,
     ChartsModule,
+    HomeModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

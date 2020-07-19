@@ -4,7 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Article } from '../../models';
 import { MatAccordion } from '@angular/material/expansion';
 import { ActionButton } from 'src/app/shared/models';
-import { MockArticle } from '../../mocks/article-details';
+import { LoaderService } from 'src/app/core/services/loader-service/loader.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-article',
@@ -14,27 +15,30 @@ import { MockArticle } from '../../mocks/article-details';
 export class ArticleComponent implements OnInit {
   @ViewChild(MatAccordion) accordion: MatAccordion;
   private isAllAccordionOpen:boolean = true;
-  actionBtns: ActionButton[] = [
+  public article:Article;
+
+  public actionBtns: ActionButton[] = [
     {
       type: 'icon',
       title: this.isAllAccordionOpen ? "Collaps All" : "Expand All",
       icon: this.isAllAccordionOpen ? "indeterminate_check_box" : "add_box",
       color: "primary",
       action: () => {
-        console.log("SDFDSF")
        this.manageExpansionPanels();
       }
     },
   ]
-  public article:Article;
-  constructor(private _http:CoreHttpService, private _acRoute:ActivatedRoute) { }
+  constructor(private _http:CoreHttpService, 
+              private _acRoute:ActivatedRoute, 
+              private metaTagService: Meta, 
+              private titleService: Title) { }
 
   ngOnInit(): void {
     this._acRoute.params.subscribe(param=>{
 
-      if(param.id)  
-        // this.fetchDetails(param.id)
-        this.article = MockArticle
+      if(param.id){  
+        this.fetchDetails(param.id)
+      }
     });
   }
 
@@ -46,8 +50,23 @@ export class ArticleComponent implements OnInit {
   fetchDetails(id:number): void{
     this._http.get("v1/items/" + id).subscribe((article: Article) => {
         this.article = article;
-        console.log(this.article)
+        this.setMeta();
     })
+  }
+
+  setMeta(): void{
+    this.metaTagService.addTags([
+      { name: 'keywords', content: this.article.title },
+      { name: 'robots', content: 'index, follow' },
+      { name: 'author', content: this.article.author },
+      { name: 'date', content: new Date().toLocaleDateString(), scheme: 'YYYY-MM-DD' },
+      { charset: 'UTF-8' }
+    ]);
+
+    this.titleService.setTitle("Coder News | "+this.article.author );
+    this.metaTagService.updateTag(
+      { name: 'description', content: 'Coder News feed, article' }
+    );
   }
 
   /** Method to set Accordian button icon dynamically */

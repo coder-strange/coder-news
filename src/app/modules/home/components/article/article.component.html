@@ -1,7 +1,7 @@
-<app-title-bar [title]="'Article By ' + article.author" [enableSearch]="false" [actions]="actionBtns"  [jumpScroller]="true"></app-title-bar>
+<app-title-bar [title]="'Article By ' + [article ? article?.author : '']" [enableSearch]="false" [actions]="actionBtns"  [jumpScroller]="true"></app-title-bar>
 
 <div id="content" role="main">
-    <mat-accordion multi>
+    <mat-accordion multi *ngIf="article">
         <mat-expansion-panel hideToggle [expanded]="true">
         <mat-expansion-panel-header  role="contentinfo" aria-labelledby="Article Title">
             <mat-panel-title>

@@ -44,13 +44,11 @@ export class TimelineComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit() {
-    console.log()
     this.lineChartData[0].data = Object.values(this.chartData).map((i:any)=>+i.votes);
     this.lineChartLabels = Object.keys(this.chartData);
   }
 
   ngOnChanges(change:SimpleChanges){
-    console.log({change})
     this.lineChartData[0].data = Object.values(change.chartData.currentValue).map((i:any)=>+i.votes);
     this.lineChartLabels = Object.keys(change.chartData.currentValue);
   }

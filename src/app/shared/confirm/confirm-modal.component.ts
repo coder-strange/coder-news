@@ -9,10 +9,11 @@ import { ConfirmDialogConfig } from '../models';
 @Component({
   selector: 'app-message-dialog',
   template: `
-    <h2 *ngIf="data.title">{{ data.title }}</h2>
+    <h5 *ngIf="data.title" mat-dialog-header>{{ data.title }}</h5>
     <div mat-dialog-content *ngIf="data.body">
       {{ data.body }}
     </div>
+    <mat-divider></mat-divider>
     <div mat-dialog-actions>
       <div class="btn-container">
         <button
