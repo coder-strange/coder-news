@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseURL : 'http://hn.algolia.com/api/'
+  apiBaseURL : 'https://hn.algolia.com/api/'
 };
