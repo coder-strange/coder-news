@@ -18,5 +18,8 @@
       "titleBar.inactiveForeground": "#e7e7e799"
     },
     "peacock.color": "#01183099",
-    "typescript.tsdk": "node_modules\\typescript\\lib"
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "appService.showBuildDuringDeployPrompt": false,
+    "appService.defaultWebAppToDeploy": "/subscriptions/4162c553-1cf3-45c5-bb73-2b19190e55c6/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/coder-newz",
+    "appService.deploySubpath": "dist"
 }
