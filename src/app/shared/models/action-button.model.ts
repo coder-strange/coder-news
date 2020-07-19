@@ -5,12 +5,12 @@ export interface ActionButton {
   type: 'raised' | 'icon' | 'stroked';
   icon: string;
   color?: 'primary' | 'accent' | 'warn';
-  isSubmit?:boolean;
-  action? ($event?:ActionButtonEvent) : void;
+  isSubmit?: boolean;
+  action?($event?: ActionButtonEvent): void;
 }
 
 export interface ActionButtonEvent{
-  data?:any;
-  index?:number;
-  element?:ElementRef
+  data?: any;
+  index?: number;
+  element?: ElementRef;
 }

@@ -14,44 +14,44 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class ArticleComponent implements OnInit {
   @ViewChild(MatAccordion) accordion: MatAccordion;
-  private isAllAccordionOpen:boolean = true;
-  public article:Article;
+  private isAllAccordionOpen = true;
+  public article: Article;
 
   public actionBtns: ActionButton[] = [
     {
       type: 'icon',
-      title: this.isAllAccordionOpen ? "Collaps All" : "Expand All",
-      icon: this.isAllAccordionOpen ? "indeterminate_check_box" : "add_box",
-      color: "primary",
+      title: this.isAllAccordionOpen ? 'Collaps All' : 'Expand All',
+      icon: this.isAllAccordionOpen ? 'indeterminate_check_box' : 'add_box',
+      color: 'primary',
       action: () => {
        this.manageExpansionPanels();
       }
     },
-  ]
-  constructor(private _http:CoreHttpService, 
-              private _acRoute:ActivatedRoute, 
-              private metaTagService: Meta, 
+  ];
+  constructor(private _http: CoreHttpService,
+              private _acRoute: ActivatedRoute,
+              private metaTagService: Meta,
               private titleService: Title) { }
 
   ngOnInit(): void {
-    this._acRoute.params.subscribe(param=>{
+    this._acRoute.params.subscribe(param => {
 
-      if(param.id){  
-        this.fetchDetails(param.id)
+      if (param.id){
+        this.fetchDetails(param.id);
       }
     });
   }
 
   /**
-   * 
+   *
    * @param id Article Id
    * @return void
    */
-  fetchDetails(id:number): void{
-    this._http.get("v1/items/" + id).subscribe((article: Article) => {
+  fetchDetails(id: number): void{
+    this._http.get('v1/items/' + id).subscribe((article: Article) => {
         this.article = article;
         this.setMeta();
-    })
+    });
   }
 
   setMeta(): void{
@@ -63,7 +63,7 @@ export class ArticleComponent implements OnInit {
       { charset: 'UTF-8' }
     ]);
 
-    this.titleService.setTitle("Coder News | "+this.article.author );
+    this.titleService.setTitle('Coder News | ' + this.article.author );
     this.metaTagService.updateTag(
       { name: 'description', content: 'Coder News feed, article' }
     );
@@ -73,20 +73,20 @@ export class ArticleComponent implements OnInit {
   setAccordianIcon() {
     if (!this.isAllAccordionOpen) {
       this.actionBtns[0] = {
-        title: "Expand all Panel",
-        type: "icon",
-        color: "primary",
-        icon: "add_box",
+        title: 'Expand all Panel',
+        type: 'icon',
+        color: 'primary',
+        icon: 'add_box',
         action: () => {
           this.manageExpansionPanels();
         }
       };
     } else {
       this.actionBtns[0] = {
-        title: "Collapse all",
-        type: "icon",
-        color: "primary",
-        icon: "indeterminate_check_box",
+        title: 'Collapse all',
+        type: 'icon',
+        color: 'primary',
+        icon: 'indeterminate_check_box',
         action: () => {
           this.manageExpansionPanels();
         }

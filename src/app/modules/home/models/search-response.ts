@@ -1,7 +1,7 @@
-import { ArticleComplete } from "./article";
+import { ArticleComplete } from './article';
 
 export interface SearchResponse{
-    hits : ArticleComplete[];
+    hits: ArticleComplete[];
     nbHits: number;
     page: number;
     nbPages: number;

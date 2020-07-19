@@ -26,10 +26,9 @@
     "component-selector": [
       true,
       "element",
-      "app",
       "kebab-case"
     ],
-    "eofline": true,
+    "eofline": false,
     "import-blacklist": [
       true,
       "rxjs/Rx"
@@ -44,7 +43,7 @@
     "max-classes-per-file": false,
     "max-line-length": [
       true,
-      140
+      400
     ],
     "member-access": false,
     "member-ordering": [
@@ -84,7 +83,8 @@
     "ordered-imports": false,
     "quotemark": [
       true,
-      "single"
+      "single",
+      "double"
     ],
     "semicolon": {
       "options": [
@@ -106,7 +106,7 @@
     "no-input-rename": true,
     "no-inputs-metadata-property": true,
     "no-output-native": true,
-    "no-output-on-prefix": true,
+    "no-output-on-prefix": false,
     "no-output-rename": true,
     "no-outputs-metadata-property": true,
     "template-banana-in-box": true,
@@ -130,12 +130,14 @@
       ]
     },
     "use-lifecycle-interface": true,
-    "use-pipe-transform-interface": true
-  ,    "variable-name": {
+    "use-pipe-transform-interface": true,
+    "variable-name": {
       "options": [
         "ban-keywords",
         "check-format",
-        "allow-pascal-case"
+        "allow-pascal-case",
+        "allow-leading-underscore",
+        "allow-trailing-underscore"
       ]
     },
     "whitespace": {
@@ -148,7 +150,7 @@
         "check-typecast"
       ]
     }
-},
+  },
   "rulesDirectory": [
     "codelyzer"
   ]

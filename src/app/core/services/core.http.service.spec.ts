@@ -39,30 +39,30 @@ describe('CoreService', () => {
   it('should send client data vie POST', fakeAsync(() => {
     const dummyData = {
       id: 0,
-      ClientCode: "admin01",
-      ClientName: "Mobile08",
-      ClientProgramNumber: "rfsca456",
+      ClientCode: 'admin01',
+      ClientName: 'Mobile08',
+      ClientProgramNumber: 'rfsca456',
       relapsePeriodInDays: 20,
       totalNumberOfEmployees: 20,
-      totalNumberOfEmployeesPerLocation: "PS-303",
+      totalNumberOfEmployeesPerLocation: 'PS-303',
       ClientContact: {
-        PhoneNumber1: "(443) 545-4643",
-        PhoneNumber2: "(542) 356-7678",
-        MobileNumber: "(431) 563-8777",
-        EmailId: "priti@primussoft.com",
-        SecondaryEmailId: "priti@primussoft.com",
-        Fax: "54e16378"
+        PhoneNumber1: '(443) 545-4643',
+        PhoneNumber2: '(542) 356-7678',
+        MobileNumber: '(431) 563-8777',
+        EmailId: 'priti@primussoft.com',
+        SecondaryEmailId: 'priti@primussoft.com',
+        Fax: '54e16378'
       },
       ClientAddress: {
-        Street1: "Sector63",
-        Street2: "Noida",
-        Street3: "Delhi",
-        City: "Noida",
-        State: "TX",
-        Country: "IN",
-        ZipCode: "453365"
+        Street1: 'Sector63',
+        Street2: 'Noida',
+        Street3: 'Delhi',
+        City: 'Noida',
+        State: 'TX',
+        Country: 'IN',
+        ZipCode: '453365'
       },
-      BenefitIdentifiers: ["BA"]
+      BenefitIdentifiers: ['BA']
     };
     service.post('client/add', dummyData).subscribe(response => {
     });
@@ -75,7 +75,7 @@ describe('CoreService', () => {
     tick();
   }));
 
-  it("should delete() method called for deleting client via DELETE", fakeAsync(() => {
+  it('should delete() method called for deleting client via DELETE', fakeAsync(() => {
     const clientId = 2;
     service.delete('client/delete/' + clientId).subscribe(response => {
       // console.log(response);
@@ -89,8 +89,8 @@ describe('CoreService', () => {
     tick();
   }));
 
-  it("should get() method called for get data via GET", fakeAsync(() => {
-    service.get("getclient").subscribe(response => {
+  it('should get() method called for get data via GET', fakeAsync(() => {
+    service.get('getclient').subscribe(response => {
       // console.log(response);
     });
 
@@ -102,7 +102,7 @@ describe('CoreService', () => {
     tick();
   }));
 
-  it("should put() method called for getclient update via PUT", fakeAsync(() => {
+  it('should put() method called for getclient update via PUT', fakeAsync(() => {
     const data = {};
     service.put('endpoint', data).subscribe(response => {
       // console.log(response);

@@ -19,9 +19,9 @@ import {MatDividerModule} from '@angular/material/divider';
 // MaterialModules
 const MatModules = [
     MatIconModule, MatButtonModule, MatToolbarModule,
-    MatDialogModule, MatSnackBarModule, 
+    MatDialogModule, MatSnackBarModule,
     MatExpansionModule, MatFormFieldModule,
-    MatInputModule, 
+    MatInputModule,
     MatTableModule, MatPaginatorModule, MatSortModule,
     MatRippleModule, MatProgressSpinnerModule,
     MatDividerModule, MatCardModule

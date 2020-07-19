@@ -7,21 +7,22 @@ import { ArticleComponent } from './modules/home/components/article/article.comp
 
 const routes: Routes = [
   {
-    path : '',
-    // loadChildren :  () => import('./modules/home/home.module').then(m => m.HomeModule)
-    children : [
-          {path: '', redirectTo: 'feed', pathMatch: 'full'}, 
+    path: '',
+    // loadChildren :  () => import('./modules/home/home.module').then(m => m.HomeModule) //Comment it for Faster Inital Paint
+    // Route for Faster Inital Paint
+    children: [
+      { path: '', redirectTo: 'feed', pathMatch: 'full' },
       {
-        path : 'feed',
-        redirectTo : 'feed'
+        path: 'feed',
+        redirectTo: 'feed'
       },
       {
-        path : 'feed',
-        component : FeedComponent
+        path: 'feed',
+        component: FeedComponent
       },
       {
-        path : 'article/:id',
-        component : ArticleComponent
+        path: 'article/:id',
+        component: ArticleComponent
       }
     ]
   }

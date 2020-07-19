@@ -1,13 +1,13 @@
 export interface Article {
-    id: number,
-    created_at: Date | string,
-    author: string,
-    title: string,
-    url: string,
-    text: string | null,
-    points: number,
-    parent_id: number | null,
-    children: Article[]
+    id: number;
+    created_at: Date | string;
+    author: string;
+    title: string;
+    url: string;
+    text: string | null;
+    points: number;
+    parent_id: number | null;
+    children: Article[];
 }
 
 
@@ -31,14 +31,14 @@ export interface ArticleComplete{
     author: string;
     points: number;
     story_text: string | null;
-    comment_text: string | null,
-    num_comments: number,
-    story_id: number | null,
-    story_title: string | null,
-    story_url: string | null,
-    parent_id: number | null,
-    created_at_i: number,
-    relevancy_score?: number,
+    comment_text: string | null;
+    num_comments: number;
+    story_id: number | null;
+    story_title: string | null;
+    story_url: string | null;
+    parent_id: number | null;
+    created_at_i: number;
+    relevancy_score?: number;
     _tags: string[];
     objectID: string;
     _highlightResult: HighlightResult | any;

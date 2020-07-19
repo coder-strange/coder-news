@@ -31,27 +31,27 @@ export class TitleBarComponent implements AfterViewInit{
   @Input() title = '';
   @Input() actions: ActionButton[] = [];
   @Input() searchString: string;
-  @Input() jumpScroller: boolean = false;
-  @Input() enableSearch: boolean = false;
+  @Input() jumpScroller = false;
+  @Input() enableSearch = false;
   @Output() filter: EventEmitter<string> = new EventEmitter<string>();
-  private _contentArea:HTMLElement;
-  public jumScrollerStatus:boolean = false;
+  private _contentArea: HTMLElement;
+  public jumScrollerStatus = false;
   constructor(@Inject(DOCUMENT) private _document: Document){}
 
   ngAfterViewInit(): void{
 
-      if(this.jumpScroller){
-        this._contentArea = this._document.getElementById("content");
-        this._contentArea.onscroll = (ev:any)=>{
+      if (this.jumpScroller){
+        this._contentArea = this._document.getElementById('content');
+        this._contentArea.onscroll = (ev: any) => {
           if (ev.srcElement.scrollTop > 100 ) {
             this.jumScrollerStatus = true;
           } else {
             this.jumScrollerStatus = false;
           }
-        }
+        };
       }
 
-      if(this.enableSearch){
+      if (this.enableSearch){
         this.subscribeFilter();
       }
   }
@@ -71,7 +71,7 @@ export class TitleBarComponent implements AfterViewInit{
       });
   }
 
-  public jumpScroll(ev:MouseEvent): void{
+  public jumpScroll(ev: MouseEvent): void{
     this._contentArea.scrollTop = 0;
     this.jumScrollerStatus = false;
   }

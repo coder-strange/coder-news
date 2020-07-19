@@ -7,7 +7,7 @@ import { Color, Label } from 'ng2-charts';
   template: `
   <mat-card>
     <div style="display: block;">
-      <canvas baseChart 
+      <canvas baseChart
         [datasets]="lineChartData"
         [labels]="lineChartLabels"
         [options]="lineChartOptions"
@@ -44,12 +44,12 @@ export class TimelineComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit() {
-    this.lineChartData[0].data = Object.values(this.chartData).map((i:any)=>+i.votes);
+    this.lineChartData[0].data = Object.values(this.chartData).map((i: any) => +i.votes);
     this.lineChartLabels = Object.keys(this.chartData);
   }
 
-  ngOnChanges(change:SimpleChanges){
-    this.lineChartData[0].data = Object.values(change.chartData.currentValue).map((i:any)=>+i.votes);
+  ngOnChanges(change: SimpleChanges){
+    this.lineChartData[0].data = Object.values(change.chartData.currentValue).map((i: any) => +i.votes);
     this.lineChartLabels = Object.keys(change.chartData.currentValue);
   }
 }

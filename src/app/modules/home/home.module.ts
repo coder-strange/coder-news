@@ -11,7 +11,7 @@ import { TimelineComponent } from './components/timeline/timeline.component';
 
 
 const moduleRoutes: Routes = [
-  {path: '', redirectTo: 'feed', pathMatch: 'full'}, 
+  {path: '', redirectTo: 'feed', pathMatch: 'full'},
   {
     path : 'feed',
     redirectTo : 'feed'
