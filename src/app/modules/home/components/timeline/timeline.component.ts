@@ -22,9 +22,8 @@ import { Color, Label } from 'ng2-charts';
   `,
   styleUrls: ['./timeline.component.scss']
 })
-export class TimelineComponent implements OnInit, OnChanges {
-  @Input() xChartLables: any = [];
-  @Input() chartData: any = [];
+export class TimelineComponent implements OnChanges {
+  @Input() chartData: any;
   public lineChartData: ChartDataSets[] = [
     { data: [], label: 'Vote Timeline' },
   ];
@@ -41,15 +40,12 @@ export class TimelineComponent implements OnInit, OnChanges {
   public lineChartLegend = true;
   public lineChartType = 'line';
 
-  constructor() { }
-
-  ngOnInit() {
-    this.lineChartData[0].data = Object.values(this.chartData).map((i: any) => +i.votes);
-    this.lineChartLabels = Object.keys(this.chartData);
+  renderMap(): void{
+    this.lineChartData[0].data = this.chartData ? Object.values(this.chartData).map((i: any) => +i.votes) : [];
+    this.lineChartLabels = this.chartData ?  Object.keys(this.chartData) : [];
   }
 
   ngOnChanges(change: SimpleChanges){
-    this.lineChartData[0].data = Object.values(change.chartData.currentValue).map((i: any) => +i.votes);
-    this.lineChartLabels = Object.keys(change.chartData.currentValue);
+    this.renderMap();
   }
 }
