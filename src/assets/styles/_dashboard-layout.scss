@@ -142,4 +142,16 @@
       .mat-table .mat-cell:first-child {
       margin-top: 4%;
     }
+}
+
+@media screen and (max-width:320px){
+  .example-container.mat-elevation-z8{
+    width: 290px;
   }
+}
+
+@media screen and (max-width:425px){
+  .example-container.mat-elevation-z8{
+    width: 290px;
+  }
+}
