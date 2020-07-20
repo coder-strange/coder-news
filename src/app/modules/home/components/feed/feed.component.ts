@@ -25,7 +25,7 @@ export class FeedComponent implements OnInit {
   public paginationData = {
     page: 1,
     nbPages: 0,
-    hitsPerPage: 20,
+    hitsPerPage: 10,
   };
   public timelineData = {
     x: this.articleLocalData ? Object.keys(this.articleLocalData) : [],
@@ -75,7 +75,7 @@ export class FeedComponent implements OnInit {
    * @return void
    */
   searchArticles(): void{
-    this._http.get(`v1/search?query=${this.query}&page=${(this.paginationData.page - 1)}`).subscribe((res: SearchResponse ) => {
+    this._http.get(`v1/search?query=${this.query}&page=${(this.paginationData.page - 1)}&hitsPerPage=${this.paginationData.hitsPerPage}`).subscribe((res: SearchResponse ) => {
       this.articles = res.hits.map(item => {
         item.num_votes = this.articleLocalData && this.articleLocalData[item.objectID]?.votes ? this.articleLocalData[item.objectID].votes : 0;
         item.is_hidden = this.articleLocalData && this.articleLocalData[item.objectID]?.hidden ? this.articleLocalData[item.objectID].hidden : false;

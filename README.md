@@ -25,7 +25,7 @@ https://coder-newz.azurewebsites.net/
 - The applicaiton is deployed on Azure Web App Service
 
 ## Performance
-You might find performance 90 or below if you run Audit, it is because of the server (No optimization), that is delaying the First Contentful Paint.
+You might find performance 90 or below if you run Audit, it is because of the server (Unoptimized and the Region is Central US), that is delaying the First Contentful Paint.
 Here's the screenshot of localhost.
 ![Perfomance](https://coder-strange-assets.s3.ap-south-1.amazonaws.com/coder-strange-performance.PNG)
 
