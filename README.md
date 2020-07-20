@@ -36,6 +36,8 @@ Here's the screenshot of localhost.
 * Angular Material - UI Component Library
 * Angular Universal - SSR
 * ngx-charts
+* Azure DevOps - Build Pipeline
+
 
 ## Installation
 
